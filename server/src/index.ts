@@ -48,6 +48,7 @@ const main = async () => {
     context: ({ req, res }) => ({
       req,
       res,
+      redis,
     }),
   });
 
@@ -66,7 +67,7 @@ const main = async () => {
   // start the server
   startServer().then(() => {
     app.listen({ port: process.env.PORT }, () =>
-      console.log(`Server ready`)
+      console.log(`Server ready http://localhost:4000${server.graphqlPath}`)
     );
   });
 
