@@ -8,6 +8,9 @@ import Redis from "ioredis";
 import connectRedis from "connect-redis";
 import { COOKIE_NAME } from "./constants";
 import dotenv from "dotenv";
+import { createUserLoader } from "./utils/createUserLoader";
+import { createUpdootLoader } from "./utils/createUpdootLoader";
+import { PostResolver } from "./resolvers/post";
 
 dotenv.config();
 
@@ -42,13 +45,15 @@ const main = async () => {
   // Initialize Apollo Server
   const server = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver],
+      resolvers: [PostResolver,UserResolver],
       validate: false,
     }),
     context: ({ req, res }) => ({
       req,
       res,
       redis,
+      userLoader: createUserLoader(),
+      updootLoader: createUpdootLoader(),
     }),
   });
 
@@ -70,7 +75,6 @@ const main = async () => {
       console.log(`Server ready http://localhost:4000${server.graphqlPath}`)
     );
   });
-
 };
 
 main().catch((err) => {
