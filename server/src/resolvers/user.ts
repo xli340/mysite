@@ -67,7 +67,7 @@ export class UserResolver {
     }
 
     const userIdNum = parseInt(userId);
-    const user = await User.findOne(userIdNum as any);
+    const user = await User.findOne({ where: { id: userIdNum } });
 
     if (!user) {
       return {
@@ -117,7 +117,7 @@ export class UserResolver {
 
     await sendEmail(
       email,
-      `<a href="http://localhost:3000/change-password/${token}">reset password</a>`
+      `<a href="http://localhost:5173/change-password/${token}">reset password</a>`
     );
 
     return true;
