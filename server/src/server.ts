@@ -1,5 +1,7 @@
 import { DataSource } from "typeorm";
+import { Post } from "./entities/Post";
 import { User } from "./entities/User";
+import { Updoot } from "./entities/Updoot";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -10,7 +12,7 @@ export const AppDataSource = new DataSource({
   database: "yelp",
   synchronize: true,
   logging: true,
-  entities: [User],
+  entities: [Post, User, Updoot],
   subscribers: [],
   migrations: [],
 });
