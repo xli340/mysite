@@ -2,6 +2,8 @@ import { DataSource } from "typeorm";
 import { Post } from "./entities/Post";
 import { User } from "./entities/User";
 import { Updoot } from "./entities/Updoot";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const AppDataSource = new DataSource({
   type: "postgres",
