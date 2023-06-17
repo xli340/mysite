@@ -4,16 +4,29 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { useLogoutMutation, useMeQuery } from "../generated/graphql";
 import { isServer } from "../utils/isServer";
 import Grid from "@mui/material/Grid";
+import AdbIcon from "@mui/icons-material/Adb";
+import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
+import { stringAvatar } from "../utils/stringAvatar";
+import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 
 interface NavBarProps {}
 
 export const NavBar: React.FC<NavBarProps> = ({}) => {
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
   const [logoutMutation] = useLogoutMutation();
   const { data, loading } = useMeQuery({
     skip: isServer(),
@@ -42,22 +55,41 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
     // user is logged in
   } else {
     body = (
-      <Grid container alignItems="center" spacing={1}>
-        <Grid item>
-          <Typography color="inherit">{data.me.username}</Typography>
-        </Grid>
-        <Grid item>
-          <Button
-            color="inherit"
+      <Box sx={{ flexGrow: 0 }}>
+        <Tooltip title="Open settings">
+          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <Avatar {...stringAvatar(data?.me.username.toUpperCase())} />
+          </IconButton>
+        </Tooltip>
+        <Menu
+          sx={{ mt: "45px" }}
+          id="menu-appbar"
+          anchorEl={anchorElUser}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={Boolean(anchorElUser)}
+          onClose={handleCloseUserMenu}
+        >
+          <MenuItem component="a" href="/create-post">
+            CreatePost
+          </MenuItem>
+          <MenuItem
             onClick={async () => {
               await logoutMutation();
               window.location.reload();
             }}
           >
-            logout
-          </Button>
-        </Grid>
-      </Grid>
+            Logout
+          </MenuItem>
+        </Menu>
+      </Box>
     );
   }
 
@@ -65,18 +97,51 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
+          <SentimentSatisfiedAltIcon
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+          />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            XINYA
+            Mysite
           </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Button
+              component="a"
+              href="/"
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              HOME
+            </Button>
+            <Button
+              component="a"
+              href="/about"
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              ABOUT
+            </Button>
+            <Button
+              component="a"
+              href="/cv"
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              CV
+            </Button>
+          </Box>
+
           <Box>{body}</Box>
         </Toolbar>
       </AppBar>

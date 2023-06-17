@@ -1,0 +1,23 @@
+query Posts($limit: Int!, $cursor: String) {
+  posts(limit: $limit, cursor: $cursor) {
+    posts {
+      id
+      title
+      text
+      points
+      voteStatus
+      creatorId
+      creator {
+        id
+        createdAt
+        updatedAt
+        username
+        email
+      }
+      createdAt
+      updatedAt
+      textSnippet
+    }
+    hasMore
+  }
+}

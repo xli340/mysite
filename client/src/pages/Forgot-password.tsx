@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import { Link, Button, Grid, Box } from "@mui/material";
+import { Link, Button, Grid, Box, Container } from "@mui/material";
 import { Wrapper } from "../components/Wrapper";
 import { InputField } from "../components/InputField";
 import { useForgotPasswordMutation } from "../generated/graphql";
@@ -9,7 +9,16 @@ const ForgotPassword: React.FC<{}> = ({}) => {
   const [complete, setComplete] = useState(false);
   const [forgotPassword] = useForgotPasswordMutation();
   return (
-    <Wrapper variant="small">
+    <Container maxWidth="xs">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "50vh",
+        }}
+      >
       <Formik
         initialValues={{ email: "" }}
         onSubmit={async (values) => {
@@ -35,7 +44,8 @@ const ForgotPassword: React.FC<{}> = ({}) => {
           </Grid>
         </Form>
       </Formik>
-    </Wrapper>
+      </Box>
+    </Container>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Wrapper } from "../components/Wrapper";
 import { Formik, Form } from "formik";
-import { Link, Button, Grid, Box, Typography } from "@mui/material";
+import { Link, Button, Grid, Box, Typography, Container } from "@mui/material";
 import { toErrorMap } from "../utils/toErrorMap";
 import { InputField } from "../components/InputField";
 import {
@@ -17,7 +17,16 @@ const ChangePassword: React.FC<{}> = () => {
   const [changePassword] = useChangePasswordMutation();
   const [tokenError, setTokenError] = useState("");
   return (
-    <Wrapper variant="small">
+    <Container maxWidth="xs">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "50vh",
+        }}
+      >
       <Formik
         initialValues={{ newPassword: "" }}
         onSubmit={async (values, { setErrors }) => {
@@ -78,7 +87,8 @@ const ChangePassword: React.FC<{}> = () => {
           </Grid>
         </Form>
       </Formik>
-    </Wrapper>
+      </Box>
+    </Container>
   );
 };
 
