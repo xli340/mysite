@@ -6,10 +6,10 @@ import { Updoot } from "./entities/Updoot";
 export const AppDataSource = new DataSource({
   type: "postgres",
   host: "localhost",
-  port: 5432,
+  port: process.env.DATABASE_PORT as number|undefined,
   username: "ubuntu",
-  password: "password",
-  database: "yelp",
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
   synchronize: true,
   logging: true,
   entities: [Post, User, Updoot],
