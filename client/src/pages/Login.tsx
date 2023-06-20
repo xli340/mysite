@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { Link, Button, Grid } from "@mui/material";
-import { Wrapper } from "../components/Wrapper";
+import { Link, Button, Grid, Box, Container, TextField } from "@mui/material";
 import { InputField } from "../components/InputField";
 import { useLoginMutation, MeQuery, MeDocument } from "../generated/graphql";
 import { toErrorMap } from "../utils/toErrorMap";
@@ -10,8 +9,18 @@ import { useNavigate } from "react-router";
 const Login: React.FC<{}> = ({}) => {
   const navigate = useNavigate();
   const [login] = useLoginMutation();
+
   return (
-    <Wrapper variant="small">
+    <Container maxWidth="xs">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "50vh",
+        }}
+      >
         <Formik
           initialValues={{ usernameOrEmail: "", password: "" }}
           onSubmit={async (values, { setErrors }) => {
@@ -65,7 +74,8 @@ const Login: React.FC<{}> = ({}) => {
             </Grid>
           </Form>
         </Formik>
-    </Wrapper>
+      </Box>
+    </Container>
   );
 };
 
