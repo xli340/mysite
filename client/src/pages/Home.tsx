@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Layout } from "../components/Layout";
 import { UpdootSection } from "../components/UpdootSection";
 import { usePostsQuery } from "../generated/graphql";
@@ -17,9 +17,7 @@ import {
 } from "@mui/material";
 import  { stringAvatar } from "../utils/stringAvatar"
 
-interface HomeProps {}
-
-const Home: React.FC<HomeProps> = ({}) => {
+const Home: React.FC = () => {
   const { data, loading, error, fetchMore, variables } = usePostsQuery({
     variables: {
       limit: 5, // Limit the number of posts to query

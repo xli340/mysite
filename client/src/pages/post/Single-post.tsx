@@ -6,7 +6,7 @@ import { Box, Typography, Paper, Container, Grid } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import "./Single-post.css";
 
-const SinglePost: React.FC<{}> = ({}) => {
+const SinglePost: React.FC= () => {
   const { data, error, loading } = useGetPostFromUrl();
 
   if (loading) {

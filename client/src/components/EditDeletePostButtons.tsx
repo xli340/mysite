@@ -1,6 +1,6 @@
 import React from "react";
 import { useDeletePostMutation, useMeQuery } from "../generated/graphql";
-import { Box, Button, IconButton, Link, Stack } from "@mui/material";
+import { IconButton, Stack } from "@mui/material";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 

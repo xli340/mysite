@@ -6,9 +6,7 @@ import { Box, Button, Container, Grid } from "@mui/material";
 import { useNavigate } from "react-router";
 import React from "react";
 
-interface registerProps {}
-
-const Register: React.FC<registerProps> = ({}) => {
+const Register: React.FC = () => {
   const navigate = useNavigate();
   const [register] = useRegisterMutation();
 

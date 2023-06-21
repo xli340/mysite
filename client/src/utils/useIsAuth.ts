@@ -2,7 +2,7 @@ import { useMeQuery } from "../generated/graphql";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-export const userIsAuth = () => {
+export const useIsAuth = () => {
   const { data, loading } = useMeQuery();
   const navigate = useNavigate();
   

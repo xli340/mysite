@@ -7,7 +7,7 @@ import { useGetIntId } from "../../utils/useGetIntId";
 import { useNavigate } from "react-router";
 import { Box, Button, Container, Grid, TextField } from "@mui/material";
 
-const EditPost:React.FC<{}> = ({}) => {
+const EditPost:React.FC = () => {
   const navigate = useNavigate();
   const intId = useGetIntId();
   const { data, loading } = usePostQuery({

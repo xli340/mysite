@@ -9,14 +9,11 @@ import Link from "@mui/material/Link";
 import { useLogoutMutation, useMeQuery } from "../generated/graphql";
 import { isServer } from "../utils/isServer";
 import Grid from "@mui/material/Grid";
-import AdbIcon from "@mui/icons-material/Adb";
 import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
 import { stringAvatar } from "../utils/stringAvatar";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 
-interface NavBarProps {}
-
-export const NavBar: React.FC<NavBarProps> = ({}) => {
+export const NavBar: React.FC = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );

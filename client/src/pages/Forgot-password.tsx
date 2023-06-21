@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import { Link, Button, Grid, Box, Container } from "@mui/material";
-import { Wrapper } from "../components/Wrapper";
+import { Button, Grid, Box, Container } from "@mui/material";
 import { InputField } from "../components/InputField";
 import { useForgotPasswordMutation } from "../generated/graphql";
 
-const ForgotPassword: React.FC<{}> = ({}) => {
+const ForgotPassword: React.FC = () => {
   const [complete, setComplete] = useState(false);
   const [forgotPassword] = useForgotPasswordMutation();
   return (

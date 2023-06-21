@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Wrapper } from "../components/Wrapper";
 import { Formik, Form } from "formik";
 import { Link, Button, Grid, Box, Typography, Container } from "@mui/material";
 import { toErrorMap } from "../utils/toErrorMap";
@@ -11,7 +10,7 @@ import {
 } from "../generated/graphql";
 import { useNavigate, useParams } from "react-router-dom";
 
-const ChangePassword: React.FC<{}> = () => {
+const ChangePassword: React.FC = () => {
   const token = useParams().token;
   const navigate = useNavigate();
   const [changePassword] = useChangePasswordMutation();

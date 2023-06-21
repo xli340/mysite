@@ -5,11 +5,11 @@ import React from "react";
 import { InputField } from "../../components/InputField";
 import { Layout } from "../../components/Layout";
 import { useCreatePostMutation } from "../../generated/graphql";
-import { userIsAuth } from "../../utils/userIsAuth";
+import { useIsAuth } from "../../utils/useIsAuth";
 
-const CreatePost: React.FC<{}> = ({}) => {
+const CreatePost: React.FC = () => {
   const navigate = useNavigate();
-  userIsAuth();
+  useIsAuth();
   const [createPost] = useCreatePostMutation();
   return (
     <Layout>

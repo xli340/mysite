@@ -1,8 +1,8 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Paper, Typography } from "@mui/material";
+import { Card, CardContent, Container, Typography } from "@mui/material";
 import React from "react";
 import { Layout } from "../components/Layout";
 
-const AboutMe:React.FC<{}> = ({}) => {
+const AboutMe:React.FC = () => {
   return (
     <Layout>
       <Container maxWidth="sm" sx={{ marginTop: "16px" }}>

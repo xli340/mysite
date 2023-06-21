@@ -1,12 +1,12 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { Link, Button, Grid, Box, Container, TextField } from "@mui/material";
+import { Link, Button, Grid, Box, Container } from "@mui/material";
 import { InputField } from "../components/InputField";
 import { useLoginMutation, MeQuery, MeDocument } from "../generated/graphql";
 import { toErrorMap } from "../utils/toErrorMap";
 import { useNavigate } from "react-router";
 
-const Login: React.FC<{}> = ({}) => {
+const Login: React.FC = () => {
   const navigate = useNavigate();
   const [login] = useLoginMutation();
 
