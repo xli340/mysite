@@ -13,6 +13,7 @@ const AboutMe:React.FC = () => {
             </Typography>
             <Typography variant="body2" color="text.secondary">
             Hello! I am Xinya, a software engineer with a passion for web development.
+            This website is mainly a forum for discussing and exploring technologies such as react and node.js. Post supports markdown format, and you are welcome to express your thoughts and experiences on these web development technologies here. Hope you have a great time here! 
             </Typography>
           </CardContent>
         </Card>

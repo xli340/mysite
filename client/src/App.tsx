@@ -10,6 +10,7 @@ import EditPost from "./pages/post/Edit-post";
 import CreatePost from "./pages/post/Create-post";
 import AboutMe from "./pages/About";
 import CV from "./pages/CV";
+import pdfUrl from '../src/CV.pdf';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Route path="/post/:postId" element={<SinglePost />} />
         <Route path="/edit-post/:postId" element={<EditPost />} />
         <Route path="/about" element={<AboutMe />} />
-        <Route path="/cv" element={<CV url={"../public/CV.pdf"} />} />
+        <Route path="/cv" element={<CV url= {pdfUrl} />} />
       </Routes>
     </BrowserRouter>
   );
