@@ -21,7 +21,16 @@ const main = async () => {
 
   // set redis
   const RedisStore = connectRedis(session);
-  const redis = new Redis();
+  let redis: Redis;
+  
+  if (process.env.NODE_ENV === "production") {
+    redis = new Redis({
+      host: "redis-container",
+      port: 6379,
+    });
+  } else {
+    redis = new Redis();
+  }
 
   // Set up session middleware
   app.use(
@@ -63,7 +72,7 @@ const main = async () => {
     server.applyMiddleware({
       app,
       cors: {
-        origin: ["http://localhost:5173", "https://studio.apollographql.com"],
+        origin: ["http://localhost:5173", "http://localhost", "https://studio.apollographql.com"],
         credentials: true,
       },
     });

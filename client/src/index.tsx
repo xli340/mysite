@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
+const uri = process.env.NODE_ENV === "production" ? "/graphql" : "http://localhost:4000/graphql";
+
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: uri,
   cache: new InMemoryCache(),
   credentials: "include",
   headers: { "X-Forwarded-Proto": "https" },
